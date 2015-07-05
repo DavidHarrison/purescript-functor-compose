@@ -8,7 +8,7 @@ Composition of functors.
 ## Installation
 
 ```
-bower install "https://github.com/DavidHarrison/purescript-functor-compose.git"
+bower install purescript-functor-compose
 ```
 
 ## Module documentation
