@@ -15,3 +15,4 @@ bower install purescript-functor-compose
 ## Module documentation
 
 - [Data.Functor.Compose](docs/Data/Functor/Compose.md)
+- [Data.Functor.Compose.Unsafe](docs/Data/Functor/Compose/Unsafe.md)

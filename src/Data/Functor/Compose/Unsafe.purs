@@ -1,5 +1,8 @@
 -- | Unsafe instances for composed typeclasses where not all conditions for
 -- | for the instance are fulfilled by the constraints.
+-- | Includes the following instances:
+-- | - `(Extend f, Extend g, Traversable f, Applicative g) => Extend (Compose f g)`
+-- | - `(Comonad f, Comonad g, Traversable f, Applicative g) => Comonad (Compose f g)`
 module Data.Functor.Compose.Unsafe where
 
 import Prelude
@@ -20,6 +23,7 @@ instance unsafeExtendCompose :: ( Extend f
            <<< extend (map (f <<< Compose) <<< traverse duplicate)
            <<< decompose
 
+-- | While the extract implementation is safe, the instance still requires the unsafe Extend instance.
 instance unsafeComonadCompose :: ( Comonad f
                                  , Comonad g
                                  , Traversable f
