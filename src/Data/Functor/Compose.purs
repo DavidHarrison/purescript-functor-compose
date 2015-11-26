@@ -6,9 +6,8 @@ import Prelude
 import Control.Alt         (Alt, alt)
 import Control.Plus        (Plus, empty)
 import Control.Alternative (Alternative)
-import Control.Apply       (lift2)
 import Data.Foldable       (Foldable, foldl, foldMap, foldr)
-import Data.Traversable    (Traversable, sequence, traverse)
+import Data.Traversable    (Traversable, traverse)
 
 data Compose f g a = Compose (f (g a))
 
@@ -56,3 +55,28 @@ instance plusCompose :: (Plus f, Functor g) => Plus (Compose f g) where
 
 instance alternativeCompose :: (Alternative f, Applicative g)
                             => Alternative (Compose f g)
+
+{-
+-------------------------------------------------------------------------------
+-- UNSAFE ---------------------------------------------------------------------
+-------------------------------------------------------------------------------
+-- | See http://stackoverflow.com/questions/12963733/writing-cojoin-or-cobind-for-n-dimensional-grid-type
+-- | for a discussion of the instance.
+-- | To hold for all comonad laws, the structure of g must be regular, so that no values are dropped.
+instance unsafeExtendCompose :: ( Extend f
+                                , Extend g
+                                , Traversable f
+                                , Applicative g
+                                ) => Extend (Compose f g) where
+    extend f = Compose
+           <<< extend (map (f <<< Compose) <<< traverse duplicate)
+           <<< decompose
+
+-- | While the extract implementation is safe, the instance still requires the unsafe Extend instance.
+instance unsafeComonadCompose :: ( Comonad f
+                                 , Comonad g
+                                 , Traversable f
+                                 , Applicative g
+                                 ) => Comonad (Compose f g) where
+    extract = extract <<< extract <<< decompose
+-}
