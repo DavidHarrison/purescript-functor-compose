@@ -12,7 +12,6 @@ Composition of functors.
 bower install purescript-functor-compose
 ```
 
-## Module documentation
+## Documentation
 
-- [Data.Functor.Compose](docs/Data/Functor/Compose.md)
-- [Data.Functor.Compose.Unsafe](docs/Data/Functor/Compose/Unsafe.md)
+Module documentation is [published on Pursuit](http://pursuit.purescript.org/packages/purescript-functor-compose).
