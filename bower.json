@@ -5,6 +5,7 @@
   "keywords": [
     "purescript"
   ],
+  "license": "MIT",
   "repository": {
     "type": "git",
     "url": "git://github.com/DavidHarrison/purescript-functor-compose.git"
@@ -17,8 +18,7 @@
     "bower.json"
   ],
   "dependencies": {
-    "purescript-control": "^0.3.2",
-    "purescript-foldable-traversable": "^0.4.1"
-  },
-  "version": "0.0.0"
+    "purescript-control": "^1.0.0",
+    "purescript-foldable-traversable": "^1.0.0"
+  }
 }

@@ -3,11 +3,11 @@ module Data.Functor.Compose (Compose(Compose), decompose) where
 
 import Prelude
 
-import Control.Alt         (Alt, alt)
-import Control.Plus        (Plus, empty)
-import Control.Alternative (Alternative)
-import Data.Foldable       (Foldable, foldl, foldMap, foldr)
-import Data.Traversable    (Traversable, traverse)
+import Control.Alt         (class Alt, alt)
+import Control.Plus        (class Plus, empty)
+import Control.Alternative (class Alternative)
+import Data.Foldable       (class Foldable, foldl, foldMap, foldr)
+import Data.Traversable    (class Traversable, traverse)
 
 data Compose f g a = Compose (f (g a))
 
